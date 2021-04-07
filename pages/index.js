@@ -1,15 +1,7 @@
 import Head from 'next/head'
+import hexagons from '../data/hexagons.json'
 
 export default function Home() {
-  const hexagons = [
-    {
-      url: "https://www.robbie.dev/assets/img/education/aws-cert-logos/No%20Border/AWS-SysOpAdmin-Associate-2020.png"
-    },{
-      url: "https://www.robbie.dev/assets/img/education/aws-cert-logos/No%20Border/AWS-SysOpAdmin-Associate-2020.png"
-    },{
-      url: "https://www.robbie.dev/assets/img/education/aws-cert-logos/No%20Border/AWS-SysOpAdmin-Associate-2020.png"
-    },
-  ]
 
   return (
     <div className="container">
@@ -20,7 +12,7 @@ export default function Home() {
 
       <div className="main">
         <div className="honeycomb">
-          {hexagons.map((hexagon, key) =>
+          {hexagons.hexagons.map((hexagon, key) =>
             <div
                 className="hexagon"
                 key={key}
