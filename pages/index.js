@@ -11,7 +11,10 @@ export default function Home() {
       </Head>
 
       <div className="main">
-        <div className="honeycomb">
+        <div className="honeycomb" style={{
+            width: "500px",
+            height: "500px"
+        }}>
           {hexagons.hexagons.map((hexagon, key) =>
             <div
                 className="hexagon"
@@ -44,6 +47,11 @@ export default function Home() {
           // r is defined as the inradius: half the diameter of the inscribed circle
           // Further reading: https://en.wikipedia.org/wiki/Hexagon#Parameters
           --r: calc((var(--hexagon-width) * 3 * var(--sec30) / 2) + (4 * var(--honeycomb-gap)) - 2px);
+          
+          // Allow resizing by dragging bottom-right corner
+          resize: both;
+          overflow: hidden;
+          border: 1px solid #e2e2e2;
         }
         
         .honeycomb {
