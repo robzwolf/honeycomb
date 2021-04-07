@@ -5,6 +5,9 @@ import {ReactSortable} from "react-sortablejs"
 
 export default function Home() {
     const [hexagons, setHexagons] = useState(defaultHexagons.hexagons);
+    const [honeycombGap, setHoneycombGap] = useState(1);
+    const [hexagonWidth, setHexagonWidth] = useState(100);
+
     return (
         <div className="container">
             <Head>
@@ -12,7 +15,10 @@ export default function Home() {
                 <link rel="icon" href="/favicon.ico"/>
             </Head>
 
-            <div className="main">
+            <div className="main" style={{
+                "--hexagon-width": `${hexagonWidth}px`,
+                "--honeycomb-gap": `${honeycombGap}px`
+            }}>
                 <div className="honeycomb" style={{
                     width: "500px",
                     height: "500px"
@@ -35,6 +41,42 @@ export default function Home() {
                 </div>
             </div>
 
+            <input
+                type="range"
+                id="honeycombGap"
+                name="honeycombGap"
+                value={honeycombGap}
+                min="0"
+                max="10"
+                step="0.1"
+                onChange={(e) => {setHoneycombGap(e.target.value)}}
+            />
+            <input
+                type="text"
+                id="honeycombGap-box"
+                name="honeycombGap"
+                value={honeycombGap}
+                onChange={(e) => {setHoneycombGap(e.target.value)}}
+            />
+
+            <input
+                type="range"
+                id="hexagonWidth"
+                name="hexagonWidth"
+                value={hexagonWidth}
+                min="50"
+                max="250"
+                step="1"
+                onChange={(e) => {setHexagonWidth(e.target.value)}}
+            />
+            <input
+                type="text"
+                id="hexagonWidth-box"
+                name="hexagonWidth"
+                value={hexagonWidth}
+                onChange={(e) => {setHexagonWidth(e.target.value)}}
+            />
+
             <style jsx>{`
               .container {
                 min-height: 100vh;
@@ -47,8 +89,10 @@ export default function Home() {
 
               .main {
                 display: flex;
-                --hexagon-width: 100px;
-                --honeycomb-gap: 1px;
+                
+                // Defined in inline styles on this element:
+                // --hexagon-width
+                // --honeycomb-gap
 
                 --sec30: 1.1547005383792515; // 1 / cos(30º) = sec(30º)
                 --tan30: 0.5773502691896257; // tan(30º)
@@ -78,6 +122,10 @@ export default function Home() {
                 margin-bottom: calc(var(--honeycomb-gap) - (var(--hexagon-width) * var(--tan30) / 2));
                 background-size: cover;
                 background-position: 50% 50%;
+              }
+              
+              .sortable-ghost {
+                filter: brightness(0) opacity(0.06) drop-shadow(0 0 1px #00b7ff);
               }
               
               .honeycomb::before {
