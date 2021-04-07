@@ -59,7 +59,8 @@ export default function Home() {
           font-size: initial;
           clip-path: polygon(0% 25%, 0% 75%, 50% 100%, 100% 75%, 100% 25%, 50% 0%);
           margin-bottom: calc(var(--honeycomb-gap) - (var(--hexagon-width) * var(--tan30) / 2));
-          background-size: contain;
+          background-size: cover;
+          background-position: 50% 50%;
         }
         
         .honeycomb::before {
