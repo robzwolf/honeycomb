@@ -2,7 +2,6 @@ import Head from 'next/head'
 import hexagons from '../data/hexagons.json'
 
 export default function Home() {
-
   return (
     <div className="container">
       <Head>
