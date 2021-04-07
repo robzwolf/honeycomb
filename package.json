@@ -8,14 +8,13 @@
     "start": "next start"
   },
   "dependencies": {
+    "@types/sortablejs": "^1.10.6",
     "next": "^10.0.0",
+    "playwright": "^1.10.0",
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "react-resize-detector": "^6.6.4",
     "react-sortablejs": "^6.0.0",
     "sortablejs": "^1.13.0"
-  },
-  "devDependencies": {
-    "@types/sortablejs": "^1.10.6"
   }
 }
