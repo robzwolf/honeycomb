@@ -1,7 +1,10 @@
 import Head from 'next/head'
-import hexagons from '../data/hexagons.json'
+import defaultHexagons from '../data/hexagons.json'
+import {useState} from "react";
+import {ReactSortable} from "react-sortablejs"
 
 export default function Home() {
+    const [hexagons, setHexagons] = useState(defaultHexagons.hexagons);
     return (
         <div className="container">
             <Head>
@@ -14,14 +17,21 @@ export default function Home() {
                     width: "500px",
                     height: "500px"
                 }}>
-                    {hexagons.hexagons.map((hexagon, key) =>
-                        <div
-                            className="hexagon"
-                            key={key}
-                            style={{
-                                backgroundImage: `url(${hexagon.url}`
-                            }}/>
-                    )}
+                    <ReactSortable
+                        list={hexagons}
+                        setList={setHexagons}
+                        animation={200}
+                        >
+                        {hexagons.map((hexagon, key) =>
+                            <div
+                                className="hexagon"
+                                key={key}
+                                draggable={false}
+                                style={{
+                                    backgroundImage: `url(${hexagon.url}`
+                                }}/>
+                        )}
+                    </ReactSortable>
                 </div>
             </div>
 
@@ -69,7 +79,7 @@ export default function Home() {
                 background-size: cover;
                 background-position: 50% 50%;
               }
-
+              
               .honeycomb::before {
                 content: "";
                 width: calc(var(--hexagon-width) / 2 + var(--honeycomb-gap));

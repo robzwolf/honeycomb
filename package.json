@@ -10,6 +10,11 @@
   "dependencies": {
     "next": "^10.0.0",
     "react": "17.0.1",
-    "react-dom": "17.0.1"
+    "react-dom": "17.0.1",
+    "react-sortablejs": "^6.0.0",
+    "sortablejs": "^1.13.0"
+  },
+  "devDependencies": {
+    "@types/sortablejs": "^1.10.6"
   }
 }
