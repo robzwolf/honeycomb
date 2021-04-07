@@ -2,6 +2,8 @@
 
 Nicely tile hexagon badges!
 
+Deployed using Vercel to https://honeycomb-badges.vercel.app/
+
 ## Quick Start
 
 ### Local Development
