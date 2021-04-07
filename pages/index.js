@@ -6,14 +6,20 @@ import SliderInput from "../components/SliderInput";
 
 export default function Home() {
     const [hexagons, setHexagons] = useState(defaultHexagons.hexagons);
+
     const [honeycombGap, setHoneycombGap] = useState(1);
+    const setHoneycombGapDefault = () => {setHoneycombGap(1)};
+
     const [hexagonWidth, setHexagonWidth] = useState(100);
+    const setHexagonWidthDefault = () => {setHexagonWidth(100)};
 
     return (
         <div className="container">
             <Head>
                 <title>Honeycomb</title>
                 <link rel="icon" href="/favicon.ico"/>
+                <link rel="preconnect" href="https://fonts.gstatic.com" />
+                <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet" />
             </Head>
 
             <div className="main" style={{
@@ -47,6 +53,7 @@ export default function Home() {
                 max={10}
                 step={0.5}
                 onChange={(e) => {setHoneycombGap(e.target.value)}}
+                setDefault={setHoneycombGapDefault}
             />
 
             <SliderInput
@@ -55,6 +62,7 @@ export default function Home() {
                 max={250}
                 step={1}
                 onChange={(e) => {setHexagonWidth(e.target.value)}}
+                setDefault={setHexagonWidthDefault}
             />
 
             <style jsx>{`
@@ -123,9 +131,7 @@ export default function Home() {
               body {
                 padding: 0;
                 margin: 0;
-                font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
-                Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
-                sans-serif;
+                font-family: 'Roboto Mono', monospace;
               }
 
               * {

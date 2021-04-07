@@ -17,6 +17,11 @@ export default function SliderInput(props) {
                 step={props.step}
                 onChange={props.onChange}
             />
+            <input
+                type="button"
+                value="Default"
+                onClick={props.setDefault}
+            />
 
             {/*language=CSS*/}
             <style jsx>{`
@@ -27,10 +32,34 @@ export default function SliderInput(props) {
                     margin: 20px 0;
                 }
                 
+                /* Button styles */
+                input[type="button"] {
+                    height: 29px;
+                    font-size: 14px;
+                    max-width: 80px;
+                    border: 1px solid #5d90bc;
+                    background: #616f78;
+                    border-radius: 4px;
+                    margin-left: 12px;
+                    padding: 4px 10px;
+                    font-family: 'Roboto Mono',monospace;
+                    color: white;
+                    cursor: pointer;
+                    transition: all 0.1s;
+                }
+                
+                input[type="button"]:hover {
+                    background: #3d474d;
+                }
+                
+                input[type="button"]:active {
+                    background: #000;
+                    color: #9cbfd0;
+                }
+                
                 /* Number field styles*/
                 input[type="number"] {
                     height: 29px;
-                    font-family: Arial, sans-serif;
                     font-size: 18px;
                     max-width: 80px;
                     border: 1px solid #5d90bc;
@@ -38,6 +67,7 @@ export default function SliderInput(props) {
                     border-radius: 4px;
                     margin-left: 12px;
                     padding: 4px;
+                    font-family: 'Roboto Mono', monospace;
                 }
             
                 /* Range slider styles */
@@ -47,10 +77,6 @@ export default function SliderInput(props) {
                     margin: 7.3px 0;
                     background-color: transparent;
                     -webkit-appearance: none;
-                }
-
-                input[type="range"]:focus {
-                    outline: none;
                 }
 
                 input[type="range"]::-webkit-slider-runnable-track {
