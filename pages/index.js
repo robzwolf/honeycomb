@@ -3,6 +3,7 @@ import defaultHexagons from '../data/hexagons.json'
 import {useState} from "react";
 import {ReactSortable} from "react-sortablejs"
 import SliderInput from "../components/SliderInput";
+import { useResizeDetector } from 'react-resize-detector';
 
 export default function Home() {
     const [hexagons, setHexagons] = useState(defaultHexagons.hexagons);
@@ -17,6 +18,8 @@ export default function Home() {
         setHexagonWidth(100)
     };
 
+    const { width: honeycombWidth, height: honeycombHeight, ref: honeycombRef } = useResizeDetector();
+
     return (
         <div className="container">
             <Head>
@@ -30,7 +33,9 @@ export default function Home() {
             <div className="main" style={{
                 width: "500px",
                 height: "500px"
-            }}>
+            }}
+            ref={honeycombRef}
+            >
                 <div className="honeycomb">
                     <ReactSortable
                         list={hexagons}
@@ -49,6 +54,14 @@ export default function Home() {
                     </ReactSortable>
                 </div>
             </div>
+
+            <p>
+                {/*{`${honeycombWidth}px × ${honeycombHeight}px`}*/}
+                <span className="dimension">{honeycombWidth}</span>
+                {`px × `}
+                <span className="dimension">{honeycombHeight}</span>
+                {`px`}
+            </p>
 
             <SliderInput
                 value={honeycombGap}
@@ -101,6 +114,9 @@ export default function Home() {
                     
                     overflow: hidden;
                     border: 1px solid #e2e2e2;
+                    
+                    /* We want the width and height to match the dimensions of the inner contents, excluding the box border */
+                    box-sizing: content-box;
                 }
 
                 .honeycomb {
@@ -132,6 +148,11 @@ export default function Home() {
                     shape-outside: repeating-linear-gradient(
                         transparent 0 calc(var(--r) - 3px),
                         white       0 var(--r));
+                }
+                
+                .dimension {
+                    font-weight: bold;
+                    color: #5d90bc;
                 }
             `}</style>
 
