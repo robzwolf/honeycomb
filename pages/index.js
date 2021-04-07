@@ -1,7 +1,4 @@
 import Head from 'next/head'
-import { create, all } from 'mathjs'
-
-const math = create(all, {})
 
 export default function Home() {
   const hexagons = [
@@ -48,7 +45,13 @@ export default function Home() {
           display: flex;
           --hexagon-width: 100px;
           --honeycomb-gap: 1px;
-          --r: calc((var(--hexagon-width) * 3 * 1.1547 / 2) + (4 * var(--honeycomb-gap)) - 2px);
+          
+          --sec30: 1.1547005383792515; // 1 / cos(30º) = sec(30º)
+          --tan30: 0.5773502691896257; // tan(30º)
+          
+          // r is defined as the inradius: half the diameter of the inscribed circle
+          // Further reading: https://en.wikipedia.org/wiki/Hexagon#Parameters
+          --r: calc((var(--hexagon-width) * 3 * var(--sec30) / 2) + (4 * var(--honeycomb-gap)) - 2px);
         }
         
         .honeycomb {
@@ -59,11 +62,11 @@ export default function Home() {
         .hexagon {
           width: var(--hexagon-width);
           margin: var(--honeycomb-gap);
-          height: calc(var(--hexagon-width) * ${math.sec(math.to(math.unit('30 deg'), 'rad'))});
+          height: calc(var(--hexagon-width) * var(--sec30));
           display: inline-block;
           font-size: initial;
           clip-path: polygon(0% 25%, 0% 75%, 50% 100%, 100% 75%, 100% 25%, 50% 0%);
-          margin-bottom: calc(var(--honeycomb-gap) - (var(--hexagon-width) * ${math.tan(math.to(math.unit('30 deg'), 'rad'))} / 2));
+          margin-bottom: calc(var(--honeycomb-gap) - (var(--hexagon-width) * var(--tan30) / 2));
           background-size: contain;
         }
         
