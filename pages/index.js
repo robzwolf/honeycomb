@@ -55,12 +55,22 @@ export default function Home() {
                 </div>
             </div>
 
-            <p>
+            <p style={{
+                textAlign: "center"
+            }}>
                 {/*{`${honeycombWidth}px × ${honeycombHeight}px`}*/}
-                <span className="dimension">{honeycombWidth}</span>
+                <span className="dimension">{honeycombWidth * window.devicePixelRatio}</span>
                 {`px × `}
-                <span className="dimension">{honeycombHeight}</span>
+                <span className="dimension">{honeycombHeight * window.devicePixelRatio}</span>
                 {`px`}
+                {window.devicePixelRatio > 1 && <>
+                    <br />
+                    {`Your device pixel ratio is `}
+                    <span className="dimension">
+                        {window.devicePixelRatio}
+                    </span>
+                    {`.`}
+                </>}
             </p>
 
             <SliderInput

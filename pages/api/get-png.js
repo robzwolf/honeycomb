@@ -16,6 +16,7 @@ export default async (req, res) => {
     <style>
         .main {
             resize: none !important;
+            border: none !important;
         }
     </style>
     `)
