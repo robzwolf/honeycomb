@@ -4,6 +4,7 @@ import {useState} from "react";
 import {ReactSortable} from "react-sortablejs"
 import SliderInput from "../components/SliderInput";
 import { useResizeDetector } from 'react-resize-detector';
+import Dimensions from "../components/Dimensions";
 
 export default function Home() {
     const [hexagons, setHexagons] = useState(defaultHexagons.hexagons);
@@ -55,24 +56,7 @@ export default function Home() {
                 </div>
             </div>
 
-            {typeof window !== "undefined" &&
-                <p style={{
-                    textAlign: "center"
-                }}>
-                    <span className="dimension">{honeycombWidth * window.devicePixelRatio}</span>
-                    {`px × `}
-                    <span className="dimension">{honeycombHeight * window.devicePixelRatio}</span>
-                    {`px`}
-                    {window.devicePixelRatio > 1 && <>
-                        <br />
-                        {`Your device pixel ratio is `}
-                        <span className="dimension">
-                            {window.devicePixelRatio}
-                        </span>
-                        {`.`}
-                    </>}
-                </p>
-            }
+            <Dimensions width={honeycombWidth} height={honeycombHeight} />
 
             <SliderInput
                 value={honeycombGap}
