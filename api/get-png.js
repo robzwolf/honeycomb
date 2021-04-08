@@ -6,7 +6,7 @@ export default async (req, res) => {
         return;
     }
 
-    const browser = await playwright.launchChromium();
+    const browser = await playwright.launchChromium({ headless: true });
     const context = await browser.newContext({
         deviceScaleFactor: 2
     });
@@ -21,7 +21,9 @@ export default async (req, res) => {
     </style>
     `)
     const element = await page.$('.honeycomb')
-    const data = await element.screenshot({
+
+    // If element is not found, fallback to a full-page screenshot
+    const data = await (element || page).screenshot({
         type: "png",
         omitBackground: true
     })
