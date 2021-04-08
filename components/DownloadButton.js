@@ -36,7 +36,7 @@ export default function DownloadButton({downloading, setDownloading}) {
                 onClick={downloadImage}
             >
                 {downloading
-                    ? <img src="/loading.svg"/>
+                    ? <img src="/loading.svg" alt="Loading animation" />
                     : <span>Download as PNG</span>
                 }
             </button>
