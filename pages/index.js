@@ -21,6 +21,8 @@ export default function Home() {
 
     const { width: honeycombWidth, height: honeycombHeight, ref: honeycombRef } = useResizeDetector();
 
+    const [downloading, setDownloading] = useState(false);
+
     return (
         <div className="container">
             <Head>
@@ -79,6 +81,33 @@ export default function Home() {
                 }}
                 setDefault={setHexagonWidthDefault}
             />
+
+            <button
+                disabled={downloading}
+                className="download-button"
+                onClick={() => {
+                    setDownloading(true);
+                    const html = document.querySelector('html').outerHTML;
+                    fetch('/api/get-png', {
+                        method: 'POST',
+                        body: html,
+                        headers: {
+                            'Content-Type': 'text/plain'
+                        }
+                    }).then(response => response.arrayBuffer())
+                    .then(arrayBuffer => {
+                        const buffer = Buffer.from(arrayBuffer)
+                        const base64Image = buffer.toString('base64')
+                        window.open(`data:image/png;base64,${base64Image}`)
+                        setDownloading(false);
+                    })
+                }}
+            >
+                {downloading
+                    ? <img src="/loading.svg"/>
+                    : <span>Download as PNG</span>
+                }
+            </button>
 
             {/*language=CSS*/}
             <style jsx>{`
@@ -149,6 +178,17 @@ export default function Home() {
                     font-weight: bold;
                     color: #5d90bc;
                 }
+                
+                .download-button {
+                    width: 200px;
+                    height: 49px;
+                    padding: 4px 34px;
+                }
+                
+                .download-button img {
+                    max-width: 100%;
+                    max-height: 100%;
+                }
             `}</style>
 
             {/*language=CSS*/}
@@ -163,32 +203,42 @@ export default function Home() {
                 * {
                     box-sizing: border-box;
                 }
-                
+
                 /* Button styles */
-                input[type="button"] {
+                input[type="button"],
+                button {
                     height: 29px;
                     font-size: 14px;
-                    max-width: 80px;
                     border: 1px solid #5d90bc;
                     background: #616f78;
                     border-radius: 4px;
                     margin-left: 12px;
                     padding: 4px 10px;
-                    font-family: 'Roboto Mono',monospace;
+                    font-family: 'Roboto Mono', monospace;
                     color: white;
                     cursor: pointer;
                     transition: all 0.1s;
                 }
-                
-                input[type="button"]:hover {
+
+                input[type="button"]:hover,
+                button:hover {
                     background: #3d474d;
                 }
-                
-                input[type="button"]:active {
+
+                input[type="button"]:active,
+                button:active {
                     background: #000;
                     color: #9cbfd0;
                 }
-                
+
+                input[type="button"]:disabled,
+                button:disabled {
+                    cursor: not-allowed;
+                    background: #98a1a2;
+                    color: lightgray;
+                    border: gray;
+                }
+
                 /* Number field styles*/
                 input[type="number"] {
                     height: 29px;
@@ -201,7 +251,7 @@ export default function Home() {
                     padding: 4px;
                     font-family: 'Roboto Mono', monospace;
                 }
-            
+
                 /* Range slider styles */
                 input[type="range"] {
                     width: 250px;
