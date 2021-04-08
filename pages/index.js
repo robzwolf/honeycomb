@@ -128,33 +128,35 @@ export default function Home() {
                         <p>Drag hexagons around the grid to reorder them.</p>
                     </div>
                 </div>
+
+                <div className="settings">
+                    <Dimensions width={honeycombWidth} height={honeycombHeight} />
+
+                    <SliderInput
+                        value={honeycombGap}
+                        min={0}
+                        max={10}
+                        step={0.5}
+                        onChange={(e) => {
+                            setHoneycombGap(e.target.value)
+                        }}
+                        setDefault={setHoneycombGapDefault}
+                    />
+
+                    <SliderInput
+                        value={hexagonWidth}
+                        min={50}
+                        max={250}
+                        step={1}
+                        onChange={(e) => {
+                            setHexagonWidth(e.target.value)
+                        }}
+                        setDefault={setHexagonWidthDefault}
+                    />
+
+                    <DownloadButton downloading={downloading} setDownloading={setDownloading} />
+                </div>
             </div>
-
-            <Dimensions width={honeycombWidth} height={honeycombHeight} />
-
-            <SliderInput
-                value={honeycombGap}
-                min={0}
-                max={10}
-                step={0.5}
-                onChange={(e) => {
-                    setHoneycombGap(e.target.value)
-                }}
-                setDefault={setHoneycombGapDefault}
-            />
-
-            <SliderInput
-                value={hexagonWidth}
-                min={50}
-                max={250}
-                step={1}
-                onChange={(e) => {
-                    setHexagonWidth(e.target.value)
-                }}
-                setDefault={setHexagonWidthDefault}
-            />
-
-            <DownloadButton downloading={downloading} setDownloading={setDownloading} />
 
             {/*language=CSS*/}
             <style jsx>{`
@@ -170,7 +172,7 @@ export default function Home() {
 
                 .app {
                     display: grid;
-                    grid-template-columns: auto 300px;
+                    grid-template-columns: auto auto auto;
                 }
 
                 .main {
@@ -232,6 +234,10 @@ export default function Home() {
                     grid-template-columns: 1fr 1fr 40px;
                     grid-gap: 8px;
                     margin: auto 20px;
+                }
+                
+                .form-header {
+                    font-weight: bold;
                 }
                 
                 .form-add-row {
