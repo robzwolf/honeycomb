@@ -1,7 +1,8 @@
 {
   "functions": {
     "api/get-png.js": {
-      "includeFiles": "node_modules/playwright-core/browsers.json"
+      "includeFiles": "node_modules/playwright-core/browsers.json",
+      "memory": 1024
     }
   }
 }
