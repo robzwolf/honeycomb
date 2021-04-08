@@ -149,11 +149,6 @@ export default function Home() {
                         transparent 0 calc(var(--r) - 3px),
                         white       0 var(--r));
                 }
-                
-                .dimension {
-                    font-weight: bold;
-                    color: #5d90bc;
-                }
             `}</style>
 
             {/*language=CSS*/}

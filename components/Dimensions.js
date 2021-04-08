@@ -9,15 +9,25 @@ export default function Dimensions({ width, height }) {
     const dpr = window.devicePixelRatio;
 
     return (
-        <p style={{
-            textAlign: "center"
-        }}>
-            <span className="dimension">{width * dpr}</span>
-            {`px × `}
-            <span className="dimension">{height * dpr}</span>
-            {`px`}
-            <DevicePixelRatioText dpr={dpr} />
-        </p>
+        <>
+            <p style={{
+                textAlign: "center"
+            }}>
+                <span className="dimension">{width * dpr}</span>
+                {`px × `}
+                <span className="dimension">{height * dpr}</span>
+                {`px`}
+                <DevicePixelRatioText dpr={dpr} />
+            </p>
+            
+            {/*language=CSS*/}
+            <style jsx>{`
+                .dimension {
+                    font-weight: bold;
+                    color: #5d90bc;
+                }
+            `}</style>
+        </>
     )
 }
 
