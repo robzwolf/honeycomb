@@ -55,23 +55,24 @@ export default function Home() {
                 </div>
             </div>
 
-            <p style={{
-                textAlign: "center"
-            }}>
-                {/*{`${honeycombWidth}px × ${honeycombHeight}px`}*/}
-                <span className="dimension">{honeycombWidth * window.devicePixelRatio}</span>
-                {`px × `}
-                <span className="dimension">{honeycombHeight * window.devicePixelRatio}</span>
-                {`px`}
-                {window.devicePixelRatio > 1 && <>
-                    <br />
-                    {`Your device pixel ratio is `}
-                    <span className="dimension">
-                        {window.devicePixelRatio}
-                    </span>
-                    {`.`}
-                </>}
-            </p>
+            {typeof window !== "undefined" &&
+                <p style={{
+                    textAlign: "center"
+                }}>
+                    <span className="dimension">{honeycombWidth * window.devicePixelRatio}</span>
+                    {`px × `}
+                    <span className="dimension">{honeycombHeight * window.devicePixelRatio}</span>
+                    {`px`}
+                    {window.devicePixelRatio > 1 && <>
+                        <br />
+                        {`Your device pixel ratio is `}
+                        <span className="dimension">
+                            {window.devicePixelRatio}
+                        </span>
+                        {`.`}
+                    </>}
+                </p>
+            }
 
             <SliderInput
                 value={honeycombGap}
