@@ -23,47 +23,47 @@
     {
       "name": "AWS Advanced Networking - Specialty",
       "url": "https://robzwolf.github.io/aws-cert-logos/No%20Border/AWS-AdvNetworking-Specialty-2020.png",
-      "enabled": true
+      "enabled": false
     },
     {
       "name": "AWS Alexa Skill Builder - Specialty",
       "url": "https://robzwolf.github.io/aws-cert-logos/No%20Border/AWS-AlexaSkillBuilder-Specialty-2020.png",
-      "enabled": true
+      "enabled": false
     },
     {
       "name": "AWS Big Data - Specialty",
       "url": "https://robzwolf.github.io/aws-cert-logos/No%20Border/AWS-BigData-Specialty-2020.png",
-      "enabled": true
+      "enabled": false
     },
     {
       "name": "AWS Data Analytics - Specialty",
       "url": "https://robzwolf.github.io/aws-cert-logos/No%20Border/AWS-DataAnalytics-Specialty-2020.png",
-      "enabled": true
+      "enabled": false
     },
     {
       "name": "AWS Machine Learning - Specialty",
       "url": "https://robzwolf.github.io/aws-cert-logos/No%20Border/AWS-MachineLearning-Specialty-2020.png",
-      "enabled": true
+      "enabled": false
     },
     {
       "name": "AWS Security - Specialty",
       "url": "https://robzwolf.github.io/aws-cert-logos/No%20Border/AWS-Security-Specialty-2020.png",
-      "enabled": true
+      "enabled": false
     },
     {
       "name": "AWS Solutions Architect - Professional",
       "url": "https://robzwolf.github.io/aws-cert-logos/No%20Border/AWS-SolArchitect-Professional-2020.png",
-      "enabled": true
+      "enabled": false
     },
     {
       "name": "AWS DevOps Engineer - Professional",
       "url": "https://robzwolf.github.io/aws-cert-logos/No%20Border/AWS-DevOpsEngineer-Professional-2020.png",
-      "enabled": true
+      "enabled": false
     },
     {
       "name": "Terraform Associate",
       "url": "https://www.datocms-assets.com/2885/1586800192-terraformassociateweb.png?fit=max&fm=webp&q=80&w=2500",
-      "enabled": true
+      "enabled": false
     }
   ]
 }

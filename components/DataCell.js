@@ -22,6 +22,11 @@ export default function DataCell({column, value, onChange, additionalProps}) {
                     padding: 4px;
                     font-family: 'Roboto Mono', monospace;
                 }
+                
+                input[type="checkbox"] {
+                    position: relative;
+                    top: -2px;
+                }
             `}</style>
         </>
     )

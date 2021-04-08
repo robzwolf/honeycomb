@@ -30,7 +30,7 @@ export default function Home() {
         const newHexagons = [...hexagons]
         newHexagons[i] = {
             ...hexagon,
-            [e.target.name]: e.target.value
+            [e.target.name]: e.target.value !== "" ? e.target.value : e.target.checked
         }
         setHexagons(newHexagons)
     }
@@ -58,7 +58,7 @@ export default function Home() {
                             setList={setHexagons}
                             animation={200}
                         >
-                            {hexagons.map((hexagon, key) =>
+                            {hexagons.filter(hexagon => hexagon.enabled).map((hexagon, key) =>
                                 <div
                                     className="hexagon"
                                     key={key}
@@ -73,6 +73,7 @@ export default function Home() {
                 <div className="form">
                     <div className="form-header fc-name">Name</div>
                     <div className="form-header fc-url">Image URL</div>
+                    <div className="form-header fc-enabled" />
 
                     {hexagons.map((hexagon, index) => (
                         <Fragment key={index}>
@@ -84,6 +85,15 @@ export default function Home() {
                             <DataCell
                                 column="url"
                                 value={hexagon.url}
+                                onChange={e => updateHexagon(e, hexagon)}
+                            />
+                            <DataCell
+                                column="enabled"
+                                additionalProps={{
+                                    type: "checkbox",
+                                    checked: hexagon.enabled,
+                                    required: false
+                                }}
                                 onChange={e => updateHexagon(e, hexagon)}
                             />
                         </Fragment>
@@ -219,7 +229,7 @@ export default function Home() {
 
                 .form {
                     display: grid;
-                    grid-template-columns: 1fr 1fr;
+                    grid-template-columns: 1fr 1fr 40px;
                     grid-gap: 8px;
                     margin: auto 20px;
                 }
