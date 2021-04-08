@@ -1,14 +1,12 @@
 import Head from 'next/head'
 import defaultHexagons from '../data/hexagons.json'
-import {useState} from "react";
+import {Fragment, useState} from "react";
 import {ReactSortable} from "react-sortablejs"
 import SliderInput from "../components/SliderInput";
-import { useResizeDetector } from 'react-resize-detector';
+import {useResizeDetector} from 'react-resize-detector';
 import Dimensions from "../components/Dimensions";
 import DownloadButton from "../components/DownloadButton";
-import ReactDataGrid from 'react-data-grid';
 import DataCell from "../components/DataCell";
-import { Fragment } from 'react'
 
 export default function Home() {
     const [hexagons, setHexagons] = useState(defaultHexagons.hexagons);
@@ -90,6 +88,20 @@ export default function Home() {
                             />
                         </Fragment>
                     ))}
+
+                    <div className="fc-json">
+                        <p>Edit or copy the following JSON to save your configuration:</p>
+                        <textarea
+                            onChange={(e) => {
+                                try {
+                                    setHexagons(JSON.parse(e.target.value))
+                                } catch (ex) {
+                                    e.preventDefault()
+                                }
+                            }}
+                            value={JSON.stringify(hexagons, null, 2)}
+                        />
+                    </div>
                 </div>
             </div>
 
@@ -194,6 +206,27 @@ export default function Home() {
                     grid-template-columns: 1fr 1fr;
                     margin: auto;
                     grid-gap: 8px;
+                }
+                
+                .fc-json {
+                    grid-column: 1 / -1;
+                }
+                
+                .fc-json textarea {
+                    font-size: 12px;
+                    border: 1px solid #5d90bc;
+                    background: #eef8ff;
+                    border-radius: 4px;
+                    padding: 4px;
+                    font-family: 'Roboto Mono', monospace;
+                    width: 100%;
+                    height: 100px;
+                }
+                
+                .fc-json p {
+                    font-size: 12px;
+                    text-align: center;
+                    font-weight: bold;
                 }
             `}</style>
 
