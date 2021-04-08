@@ -1,26 +1,28 @@
 import * as playwright from 'playwright-aws-lambda';
 
 export default async (req, res) => {
+    if (req.method !== 'POST') {
+        res.status(405).end("405 Method Not Allowed");
+        return;
+    }
+
     const browser = await playwright.launchChromium();
-    const page = await browser.newPage({
-        viewport: {
-            width: 1200,
-            height: 630
-        }
+    const context = await browser.newContext({
+        deviceScaleFactor: 2
     });
-    // const url = getAbsoluteURL(req.query["path"] as string || "")
-    // await page.goto(url, {
-    //     timeout: 15 * 1000
-    // })
+    const page = await context.newPage();
     await page.setContent(`
-    <html>
-        <body>
-            <p>Hello, world!</p>
-        </body>
-    </html>
+    ${req.body}
+    <style>
+        .main {
+            resize: none !important;
+        }
+    </style>
     `)
-    const data = await page.screenshot({
-        type: "png"
+    const element = await page.$('.honeycomb')
+    const data = await element.screenshot({
+        type: "png",
+        omitBackground: true
     })
     await browser.close()
     res.setHeader("Cache-Control", "s-maxage=31536000, stale-while-revalidate")
