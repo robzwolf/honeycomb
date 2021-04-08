@@ -50,7 +50,6 @@ export default function Home() {
                             <div
                                 className="hexagon"
                                 key={key}
-                                draggable={false}
                                 style={{
                                     backgroundImage: `url(${hexagon.url}`
                                 }}/>

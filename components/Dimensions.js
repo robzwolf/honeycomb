@@ -19,7 +19,7 @@ export default function Dimensions({ width, height }) {
                 {`px`}
                 <DevicePixelRatioText dpr={dpr} />
             </p>
-            
+
             {/*language=CSS*/}
             <style jsx>{`
                 .dimension {
