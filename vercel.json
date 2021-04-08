@@ -1,6 +1,6 @@
 {
   "functions": {
-    "pages/api/get-png.js": {
+    "api/get-png.js": {
       "includeFiles": "node_modules/playwright-core/browsers.json"
     }
   }
