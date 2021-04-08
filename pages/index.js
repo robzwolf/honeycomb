@@ -109,6 +109,7 @@ export default function Home() {
                             }}
                             value={JSON.stringify(hexagons, null, 2)}
                         />
+                        <p>Drag hexagons around the grid to reorder them.</p>
                     </div>
                 </div>
             </div>
