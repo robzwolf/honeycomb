@@ -1,0 +1,7 @@
+{
+  "functions": {
+    "api/og.ts": {
+      "includeFiles": "node_modules/playwright-core/browsers.json"
+    }
+  }
+}
