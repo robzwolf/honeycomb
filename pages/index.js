@@ -89,7 +89,15 @@ export default function Home() {
                         </Fragment>
                     ))}
 
-                    <div className="fc-json">
+                    <button
+                        className="form-add-row"
+                        onClick={() => {
+                            setHexagons([...hexagons, {name: "", url: ""}])
+                        }}>
+                        <span>Add Hexagon</span>
+                    </button>
+
+                    <div className="form-json">
                         <p>Edit or copy the following JSON to save your configuration:</p>
                         <textarea
                             onChange={(e) => {
@@ -204,15 +212,23 @@ export default function Home() {
                 .form {
                     display: grid;
                     grid-template-columns: 1fr 1fr;
-                    margin: auto;
                     grid-gap: 8px;
+                    margin: auto 20px;
                 }
                 
-                .fc-json {
+                .form-add-row {
+                    grid-column: 1 / -1;
+                    text-align: right;
+                    cursor: pointer;
+                    height: auto;
+                    margin: 0;
+                }
+
+                .form-json {
                     grid-column: 1 / -1;
                 }
-                
-                .fc-json textarea {
+
+                .form-json textarea {
                     font-size: 12px;
                     border: 1px solid #5d90bc;
                     background: #eef8ff;
@@ -222,8 +238,8 @@ export default function Home() {
                     width: 100%;
                     height: 100px;
                 }
-                
-                .fc-json p {
+
+                .form-json p {
                     font-size: 12px;
                     text-align: center;
                     font-weight: bold;
