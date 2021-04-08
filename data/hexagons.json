@@ -2,32 +2,67 @@
   "hexagons": [
     {
       "name": "AWS Cloud Practitioner",
-      "url": "https://www.robbie.dev/assets/img/education/aws-cert-logos/No%20Border/AWS-CloudPractitioner-2020.png",
-      "enabled": true
-    },
-    {
-      "name": "AWS SysOps Administrator - Associate",
-      "url": "https://www.robbie.dev/assets/img/education/aws-cert-logos/No%20Border/AWS-SysOpAdmin-Associate-2020.png",
-      "enabled": true
-    },
-    {
-      "name": "AWS Developer - Associate",
-      "url": "https://www.robbie.dev/assets/img/education/aws-cert-logos/No%20Border/AWS-Developer-Associate-2020.png",
+      "url": "https://robzwolf.github.io/aws-cert-logos/No%20Border/AWS-CloudPractitioner-2020.png",
       "enabled": true
     },
     {
       "name": "AWS Solutions Architect - Associate",
-      "url": "https://www.robbie.dev/assets/img/education/aws-cert-logos/No%20Border/AWS-SolArchitect-Associate-2020.png",
+      "url": "https://robzwolf.github.io/aws-cert-logos/No%20Border/AWS-SolArchitect-Associate-2020.png",
       "enabled": true
     },
     {
-      "name": "Terraform Associate",
-      "url": "https://www.datocms-assets.com/2885/1586800192-terraformassociateweb.png?fit=max&fm=webp&q=80&w=2500",
+      "name": "AWS Developer - Associate",
+      "url": "https://robzwolf.github.io/aws-cert-logos/No%20Border/AWS-Developer-Associate-2020.png",
+      "enabled": true
+    },
+    {
+      "name": "AWS SysOps Administrator - Associate",
+      "url": "https://robzwolf.github.io/aws-cert-logos/No%20Border/AWS-SysOpAdmin-Associate-2020.png",
       "enabled": true
     },
     {
       "name": "AWS Advanced Networking - Specialty",
       "url": "https://robzwolf.github.io/aws-cert-logos/No%20Border/AWS-AdvNetworking-Specialty-2020.png",
+      "enabled": true
+    },
+    {
+      "name": "AWS Alexa Skill Builder - Specialty",
+      "url": "https://robzwolf.github.io/aws-cert-logos/No%20Border/AWS-AlexaSkillBuilder-Specialty-2020.png",
+      "enabled": true
+    },
+    {
+      "name": "AWS Big Data - Specialty",
+      "url": "https://robzwolf.github.io/aws-cert-logos/No%20Border/AWS-BigData-Specialty-2020.png",
+      "enabled": true
+    },
+    {
+      "name": "AWS Data Analytics - Specialty",
+      "url": "https://robzwolf.github.io/aws-cert-logos/No%20Border/AWS-DataAnalytics-Specialty-2020.png",
+      "enabled": true
+    },
+    {
+      "name": "AWS Machine Learning - Specialty",
+      "url": "https://robzwolf.github.io/aws-cert-logos/No%20Border/AWS-MachineLearning-Specialty-2020.png",
+      "enabled": true
+    },
+    {
+      "name": "AWS Security - Specialty",
+      "url": "https://robzwolf.github.io/aws-cert-logos/No%20Border/AWS-Security-Specialty-2020.png",
+      "enabled": true
+    },
+    {
+      "name": "AWS Solutions Architect - Professional",
+      "url": "https://robzwolf.github.io/aws-cert-logos/No%20Border/AWS-SolArchitect-Professional-2020.png",
+      "enabled": true
+    },
+    {
+      "name": "AWS DevOps Engineer - Professional",
+      "url": "https://robzwolf.github.io/aws-cert-logos/No%20Border/AWS-DevOpsEngineer-Professional-2020.png",
+      "enabled": true
+    },
+    {
+      "name": "Terraform Associate",
+      "url": "https://www.datocms-assets.com/2885/1586800192-terraformassociateweb.png?fit=max&fm=webp&q=80&w=2500",
       "enabled": true
     }
   ]

@@ -107,7 +107,13 @@ export default function Home() {
                                     e.preventDefault()
                                 }
                             }}
-                            value={JSON.stringify(hexagons, null, 2)}
+                            value={JSON.stringify(hexagons.map(hexagon => ({
+                                ...hexagon,
+
+                                // Remove these two properties from the rearranging since we don't need them in our JSON
+                                chosen: undefined,
+                                selected: undefined
+                            })), null, 2)}
                         />
                         <p>Drag hexagons around the grid to reorder them.</p>
                     </div>
@@ -149,6 +155,7 @@ export default function Home() {
                     flex-direction: column;
                     justify-content: center;
                     align-items: center;
+                    margin-top: 30px;
                 }
 
                 .app {
