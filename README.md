@@ -10,6 +10,11 @@ Deployed using Vercel to https://honeycomb-badges.vercel.app/
 
 ```bash
 npm install
+
+# If you have Vercel CLI installed
+vercel dev
+
+# If you don't have Vercel CLI installed
 npm run dev
 ```
 
