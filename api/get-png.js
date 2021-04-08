@@ -21,6 +21,10 @@ ${req.body}
         resize: none !important;
         border: none !important;
     }
+    
+    .app > *:not(.main) {
+        display: none;
+    }
 </style>
     `)
     console.log("Set page content")
