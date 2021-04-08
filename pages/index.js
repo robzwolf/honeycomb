@@ -5,6 +5,7 @@ import {ReactSortable} from "react-sortablejs"
 import SliderInput from "../components/SliderInput";
 import { useResizeDetector } from 'react-resize-detector';
 import Dimensions from "../components/Dimensions";
+import DownloadButton from "../components/DownloadButton";
 
 export default function Home() {
     const [hexagons, setHexagons] = useState(defaultHexagons.hexagons);
@@ -82,32 +83,7 @@ export default function Home() {
                 setDefault={setHexagonWidthDefault}
             />
 
-            <button
-                disabled={downloading}
-                className="download-button"
-                onClick={() => {
-                    setDownloading(true);
-                    const html = document.querySelector('html').outerHTML;
-                    fetch('/api/get-png', {
-                        method: 'POST',
-                        body: html,
-                        headers: {
-                            'Content-Type': 'text/plain'
-                        }
-                    }).then(response => response.arrayBuffer())
-                    .then(arrayBuffer => {
-                        const buffer = Buffer.from(arrayBuffer)
-                        const base64Image = buffer.toString('base64')
-                        window.open(`data:image/png;base64,${base64Image}`)
-                        setDownloading(false);
-                    })
-                }}
-            >
-                {downloading
-                    ? <img src="/loading.svg"/>
-                    : <span>Download as PNG</span>
-                }
-            </button>
+            <DownloadButton downloading={downloading} setDownloading={setDownloading} />
 
             {/*language=CSS*/}
             <style jsx>{`
@@ -177,17 +153,6 @@ export default function Home() {
                 .dimension {
                     font-weight: bold;
                     color: #5d90bc;
-                }
-                
-                .download-button {
-                    width: 200px;
-                    height: 49px;
-                    padding: 4px 34px;
-                }
-                
-                .download-button img {
-                    max-width: 100%;
-                    max-height: 100%;
                 }
             `}</style>
 
