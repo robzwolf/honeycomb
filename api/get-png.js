@@ -1,5 +1,6 @@
 import * as playwright from 'playwright-aws-lambda';
-import sharp from "sharp";
+import FormData from "form-data";
+import fetch from 'node-fetch'
 
 export default async function handler(req, res) {
     if (req.method !== 'POST') {
@@ -7,7 +8,7 @@ export default async function handler(req, res) {
         return;
     }
 
-    const browser = await playwright.launchChromium({ headless: true });
+    const browser = await playwright.launchChromium({headless: true});
     const context = await browser.newContext({
         deviceScaleFactor: 2
     });
@@ -33,9 +34,20 @@ ${req.body}
     console.log("Took screenshot")
     await browser.close()
     console.log("Closed browser")
-    const imageTrimmed = await sharp(imageWithSpace).trim().toBuffer()
-    console.log("Trimmed image")
+
+    const fd = new FormData()
+    fd.append("image", imageWithSpace, {contentType: 'image/png', filename: 'screenshot.png'})
+
+    const data = await fetch(process.env.TRIM_API_URL, {
+        method: 'POST',
+        body: fd
+    })
+    .then(function (trimResponse) {
+        return trimResponse.buffer();
+    })
+
     res.setHeader("Cache-Control", "s-maxage=31536000, stale-while-revalidate")
     res.setHeader('Content-Type', 'image/png')
-    res.end(imageTrimmed)
+
+    res.end(data)
 }

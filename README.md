@@ -12,6 +12,7 @@ Deployed using Vercel to https://honeycomb-badges.vercel.app/
 npm install
 
 # If you have Vercel CLI installed
+cp .env.development .env
 vercel dev
 
 # If you don't have Vercel CLI installed

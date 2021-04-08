@@ -103,3 +103,7 @@ fabric.properties
 
 # Vercel CLI files
 .vercel
+
+# Environment variables file (use .env.development or .env.production instead)
+.env
+
