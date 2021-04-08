@@ -6,6 +6,9 @@ import SliderInput from "../components/SliderInput";
 import { useResizeDetector } from 'react-resize-detector';
 import Dimensions from "../components/Dimensions";
 import DownloadButton from "../components/DownloadButton";
+import ReactDataGrid from 'react-data-grid';
+import DataCell from "../components/DataCell";
+import { Fragment } from 'react'
 
 export default function Home() {
     const [hexagons, setHexagons] = useState(defaultHexagons.hexagons);
@@ -24,6 +27,16 @@ export default function Home() {
 
     const [downloading, setDownloading] = useState(false);
 
+    const updateHexagon = (e, hexagon) => {
+        const i = hexagons.indexOf(hexagon)
+        const newHexagons = [...hexagons]
+        newHexagons[i] = {
+            ...hexagon,
+            [e.target.name]: e.target.value
+        }
+        setHexagons(newHexagons)
+    }
+
     return (
         <div className="container">
             <Head>
@@ -34,28 +47,49 @@ export default function Home() {
                       rel="stylesheet"/>
             </Head>
 
-            <div className="main" style={{
-                width: "500px",
-                height: "500px"
-            }}
-            ref={honeycombRef}
-            >
-                <div className="honeycomb">
-                    <ReactSortable
-                        list={hexagons}
-                        setList={setHexagons}
-                        animation={200}
-                    >
-                        {hexagons.map((hexagon, key) =>
-                            <div
-                                className="hexagon"
-                                key={key}
-                                draggable={true}
-                                style={{
-                                    backgroundImage: `url(${hexagon.url}`
-                                }}/>
-                        )}
-                    </ReactSortable>
+            <div className="app">
+                <div className="main" style={{
+                    width: "500px",
+                    height: "500px"
+                }}
+                     ref={honeycombRef}
+                >
+                    <div className="honeycomb">
+                        <ReactSortable
+                            list={hexagons}
+                            setList={setHexagons}
+                            animation={200}
+                        >
+                            {hexagons.map((hexagon, key) =>
+                                <div
+                                    className="hexagon"
+                                    key={key}
+                                    draggable={true}
+                                    style={{
+                                        backgroundImage: `url(${hexagon.url}`
+                                    }}/>
+                            )}
+                        </ReactSortable>
+                    </div>
+                </div>
+                <div className="form">
+                    <div className="form-header fc-name">Name</div>
+                    <div className="form-header fc-url">Image URL</div>
+
+                    {hexagons.map((hexagon, index) => (
+                        <Fragment key={index}>
+                            <DataCell
+                                column="name"
+                                value={hexagon.name}
+                                onChange={e => updateHexagon(e, hexagon)}
+                            />
+                            <DataCell
+                                column="url"
+                                value={hexagon.url}
+                                onChange={e => updateHexagon(e, hexagon)}
+                            />
+                        </Fragment>
+                    ))}
                 </div>
             </div>
 
@@ -96,25 +130,30 @@ export default function Home() {
                     align-items: center;
                 }
 
+                .app {
+                    display: grid;
+                    grid-template-columns: auto 300px;
+                }
+
                 .main {
                     display: flex;
 
                     --hexagon-width: ${hexagonWidth}px;
                     --honeycomb-gap: ${honeycombGap}px;
-                       
+
                     --cos30: 0.8660254037844387; /* cos(30º) */
                     --tan30: 0.5773502691896257; /* tan(30 º) */
-                    
+
                     /* r is defined as the inradius: half the diameter of the inscribed circle
                        Further reading: https://en.wikipedia.org/wiki/Hexagon #Parameters   */
                     --r: calc((var(--hexagon-width) * 3 * .5 / var(--cos30)) + (4 * var(--honeycomb-gap)) - 2px);
-    
+
                     /* Allow resizing by dragging bottom-right corner */
                     resize: both;
-                    
+
                     overflow: hidden;
                     border: 1px solid #e2e2e2;
-                    
+
                     /* We want the width and height to match the dimensions of the inner contents, excluding the box border */
                     box-sizing: content-box;
                 }
@@ -146,8 +185,15 @@ export default function Home() {
                     float: left;
                     height: 100%;
                     shape-outside: repeating-linear-gradient(
-                        transparent 0 calc(var(--r) - 3px),
-                        white       0 var(--r));
+                            transparent 0 calc(var(--r) - 3px),
+                            white 0 var(--r));
+                }
+
+                .form {
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+                    margin: auto;
+                    grid-gap: 8px;
                 }
             `}</style>
 
