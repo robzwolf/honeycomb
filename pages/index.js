@@ -58,13 +58,14 @@ export default function Home() {
                             setList={setHexagons}
                             animation={200}
                         >
-                            {hexagons.filter(hexagon => hexagon.enabled).map((hexagon, key) =>
+                            {hexagons.map((hexagon, key) =>
                                 <div
                                     className="hexagon"
                                     key={key}
                                     draggable={true}
                                     style={{
-                                        backgroundImage: `url(${hexagon.url}`
+                                        backgroundImage: `url('${hexagon.url}')`,
+                                        display: hexagon.enabled ? 'inline-block' : 'none'
                                     }}/>
                             )}
                         </ReactSortable>
