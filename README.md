@@ -4,6 +4,8 @@ Nicely tile hexagon badges!
 
 Deployed using Vercel to https://honeycomb.robbie.dev/
 
+> **Works best in Google Chrome on desktop.** Firefox has issues with dragging to reorder. Untested on other browsers.
+
 ## Quick Start
 
 ### Local Development
