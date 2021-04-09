@@ -1,4 +1,5 @@
 # Honeycomb
+![Vercel](https://vercelbadge.vercel.app/api/robzwolf/honeycomb)
 
 Nicely tile hexagon badges!
 
