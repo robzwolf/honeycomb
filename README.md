@@ -2,7 +2,7 @@
 
 Nicely tile hexagon badges!
 
-Deployed using Vercel to https://honeycomb-badges.vercel.app/
+Deployed using Vercel to https://honeycomb.robbie.dev/
 
 ## Quick Start
 
